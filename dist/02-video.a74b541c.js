@@ -503,6 +503,21 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"fFZ34":[function(require,module,exports) {
+//const Eliframe = document.querySelector('#vimeo-player');
+const player = new Vimeo.Player("vimeo-player");
+console.log(JSON.parse(localStorage.getItem("videoplayer-current-time")).seconds);
+player.setCurrentTime(JSON.parse(localStorage.getItem("videoplayer-current-time")).seconds).then(function(seconds) {
+// seconds = the actual time that the player seeked to
+}).catch(function(error) {
+    error.name;
+});
+player.on("timeupdate", function(data) {
+    console.log(data);
+    localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
+});
+player.getVideoTitle().then(function(title) {
+    console.log("title:", title);
+});
 
 },{}]},["5rKFT","fFZ34"], "fFZ34", "parcelRequire4c75")
 
