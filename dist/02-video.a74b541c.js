@@ -503,8 +503,10 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"fFZ34":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 //const Eliframe = document.querySelector('#vimeo-player');
-var throttle = require("lodash.throttle");
+var _lodashThrottle = require("lodash.throttle");
+var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
 const player = new Vimeo.Player("vimeo-player");
 /* console.log(
   JSON.parse(localStorage.getItem('videoplayer-current-time')).seconds
@@ -513,14 +515,14 @@ const player = new Vimeo.Player("vimeo-player");
 }).catch(function(error) {
     error.name;
 });
-player.on("timeupdate", throttle(function(data) {
+player.on("timeupdate", (0, _lodashThrottleDefault.default)(function(data) {
     localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 }, 1000));
 player.getVideoTitle().then(function(title) {
     console.log("title:", title);
 });
 
-},{"lodash.throttle":"bGJVT"}],"bGJVT":[function(require,module,exports) {
+},{"lodash.throttle":"bGJVT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bGJVT":[function(require,module,exports) {
 var global = arguments[3];
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -860,6 +862,36 @@ var global = arguments[3];
     return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
 }
 module.exports = throttle;
+
+},{}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["5rKFT","fFZ34"], "fFZ34", "parcelRequire4c75")
 

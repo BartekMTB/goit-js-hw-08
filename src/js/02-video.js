@@ -1,5 +1,5 @@
 //const Eliframe = document.querySelector('#vimeo-player');
-var throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
 
 const player = new Vimeo.Player('vimeo-player');
 
