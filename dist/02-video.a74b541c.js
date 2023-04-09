@@ -510,7 +510,7 @@ var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
 const player = new Vimeo.Player("vimeo-player");
 /* console.log(
   JSON.parse(localStorage.getItem('videoplayer-current-time')).seconds
-); */ player.on("timeupdate", (0, _lodashThrottleDefault.default)(function(data) {
+); */ player.on("timeupdate", (0, _lodashThrottleDefault.default)((data)=>{
     localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 }, 1000));
 player.getVideoTitle().then(function(title) {
