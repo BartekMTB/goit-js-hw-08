@@ -510,16 +510,16 @@ var _lodashThrottleDefault = parcelHelpers.interopDefault(_lodashThrottle);
 const player = new Vimeo.Player("vimeo-player");
 /* console.log(
   JSON.parse(localStorage.getItem('videoplayer-current-time')).seconds
-); */ player.setCurrentTime(JSON.parse(localStorage.getItem("videoplayer-current-time")).seconds).then(function(seconds) {
-// seconds = the actual time that the player seeked to
-}).catch(function(error) {
-    error.name;
-});
-player.on("timeupdate", (0, _lodashThrottleDefault.default)(function(data) {
+); */ player.on("timeupdate", (0, _lodashThrottleDefault.default)(function(data) {
     localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 }, 1000));
 player.getVideoTitle().then(function(title) {
     console.log("title:", title);
+});
+player.setCurrentTime(JSON.parse(localStorage.getItem("videoplayer-current-time")).seconds).then(function(seconds) {
+// seconds = the actual time that the player seeked to
+}).catch(function(error) {
+    error.name;
 });
 
 },{"lodash.throttle":"bGJVT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bGJVT":[function(require,module,exports) {

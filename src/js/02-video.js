@@ -7,6 +7,17 @@ const player = new Vimeo.Player('vimeo-player');
   JSON.parse(localStorage.getItem('videoplayer-current-time')).seconds
 ); */
 
+player.on(
+  'timeupdate',
+  throttle(function (data) {
+    localStorage.setItem('videoplayer-current-time', JSON.stringify(data));
+  }, 1000)
+);
+
+player.getVideoTitle().then(function (title) {
+  console.log('title:', title);
+});
+
 player
   .setCurrentTime(
     JSON.parse(localStorage.getItem('videoplayer-current-time')).seconds
@@ -25,14 +36,3 @@ player
         break;
     }
   });
-
-player.on(
-  'timeupdate',
-  throttle(function (data) {
-    localStorage.setItem('videoplayer-current-time', JSON.stringify(data));
-  }, 1000)
-);
-
-player.getVideoTitle().then(function (title) {
-  console.log('title:', title);
-});
